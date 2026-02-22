@@ -1,0 +1,486 @@
+{
+  "kind": "build_request",
+  "title": "Build MusicScope music streaming app with mood-based recommendations",
+  "projectName": "MusicScope",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create backend data model for Song with fields: id (Text), title (Text), artist (Text), album (Text), mood (Text), genre (Text), audioUrl (Text), duration (Nat), and createdAt (Int)",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "Create backend data models for songs (with mood, genre, audio URL)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Song type defined in backend with all specified fields",
+        "Fields include mood and genre for recommendation algorithm",
+        "Audio URL field stores the location of the song file"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create backend data model for UserProfile with fields: userId (Principal), displayName (Text), contact (Text), likedSongs (Array of song IDs), downloadedSongs (Array of song IDs), and createdAt (Int)",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "user profiles (with liked/downloaded songs)",
+          "the users ID contact and the like the songs and downloaded songs has to shown"
+        ]
+      },
+      "acceptanceCriteria": [
+        "UserProfile type defined with userId as Principal",
+        "Arrays store liked and downloaded song IDs",
+        "Contact information field included"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create backend data model for ListeningHistory with fields: id (Text), userId (Principal), songId (Text), timestamp (Int), and mood (Text)",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "listening history",
+          "shows the songs listened per day or week or month or year"
+        ]
+      },
+      "acceptanceCriteria": [
+        "ListeningHistory type captures each play event",
+        "Timestamp field enables time-based aggregation",
+        "Mood captured for tracking preference patterns"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement backend method to add songs with all fields (title, artist, album, mood, genre, audioUrl, duration) and return the created song",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "Implement backend methods for song management"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method accepts song parameters and stores in stable storage",
+        "Generated unique ID returned with created song",
+        "All fields properly validated before storage"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Implement backend method to retrieve all songs as an array",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "song management",
+          "first page is home page where the songs are listed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method returns complete list of all songs",
+        "Array includes all song fields",
+        "Empty array returned if no songs exist"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement backend method to get songs filtered by artist, returning an array grouped by artist name",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "second page has artist and albums which has to show"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method filters songs by artist parameter",
+        "Returns array of songs for specified artist",
+        "Supports case-insensitive matching"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Implement backend method to get songs filtered by album, returning an array grouped by album name",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "second page has artist and albums which has to show"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method filters songs by album parameter",
+        "Returns array of songs for specified album",
+        "Supports case-insensitive matching"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Implement backend method to search songs by query string, matching against title, artist, album, or genre, returning filtered results",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "Third pages search page where the songs typed in the search bar has to shown"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method performs case-insensitive search across multiple fields",
+        "Returns songs matching any of: title, artist, album, genre",
+        "Empty query returns all songs"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Implement backend method to create or update user profile with displayName, contact, and return the profile",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "user profile operations",
+          "the users ID contact"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method creates profile if not exists, updates if exists",
+        "Uses caller Principal as userId",
+        "Returns updated profile with all fields"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Implement backend method to get user profile by Principal, returning profile with liked/downloaded song counts",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "Profile (user stats)",
+          "like the songs and downloaded songs has to shown with number of accounts"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method retrieves profile for specified Principal",
+        "Returns null or error if profile does not exist",
+        "Includes counts of liked and downloaded songs"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Implement backend method to add a song to user's liked songs array and persist the change",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "liked songs"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method adds songId to likedSongs array",
+        "Prevents duplicate entries",
+        "Returns success confirmation"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Implement backend method to remove a song from user's liked songs array",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "liked songs"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method removes songId from likedSongs array",
+        "Handles case where song was not liked",
+        "Returns success confirmation"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Implement backend method to add a song to user's downloaded songs array and persist the change",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "downloaded songs"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method adds songId to downloadedSongs array",
+        "Prevents duplicate entries",
+        "Returns success confirmation"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Implement backend method to record listening history entry with userId, songId, timestamp, and mood",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "listening history tracking"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method creates new history entry with current timestamp",
+        "Captures song mood for recommendation algorithm",
+        "Persists to stable storage"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Implement backend method to get listening history for a user, filterable by time period (day, week, month, year), returning an array of history entries with song details",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "shows the songs listened per day or week or month or year"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Method accepts userId and time period filter",
+        "Returns history entries within specified time range",
+        "Includes song details joined with history records"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Implement backend mood-based recommendation algorithm that takes current song mood and returns an array of 5-10 songs with matching or complementary moods, excluding recently played songs",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "mood-based recommendation algorithm",
+          "the current song mood made to predict next song on the same mood"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Algorithm filters songs by matching mood",
+        "Returns 5-10 recommended songs",
+        "Excludes songs played in current session",
+        "Randomizes results to provide variety"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Create Home page at route '/' that displays all songs in a scrollable list with song title, artist, album, and duration, and triggers playback when a song is clicked",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "first page is home page where the songs are listed and while touching songs has to play"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Home page fetches and displays all songs",
+        "Each song card shows title, artist, album, duration",
+        "Clicking a song triggers playback in persistent player",
+        "List is scrollable with smooth scrolling behavior"
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "text": "Create Artists/Albums page at route '/artists' that groups songs by artist and album with expandable sections, displaying album art or placeholder, and triggers playback when a song is clicked",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "second page has artist and albums which has to show and while touching the song that song has to play"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Page displays artists with their albums in grouped sections",
+        "Sections are expandable/collapsible",
+        "Songs within each album clickable for playback",
+        "Shows placeholder art when album art unavailable"
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Create Search page at route '/search' with a search input that filters songs in real-time as user types, displaying matching results, and triggers playback when a result is clicked",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "Third pages search page where the songs typed in the search bar has to shown and while touching that song the song has to play"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Search input filters songs client-side or server-side",
+        "Results update in real-time as user types",
+        "Clicking a result triggers playback",
+        "Shows 'no results' message when search yields nothing"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Create Dashboard page at route '/dashboard' that displays listening history visualization with colorful bar and line charts, filterable by day, week, month, and year time periods",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "Dashboard (visualization with colorful charts)",
+          "shows the songs listened per day or week or month or year",
+          "add different type of charts with the colourful bars and lines"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dashboard shows at least 2 chart types (bar and line)",
+        "Charts display listening history data with colorful styling",
+        "Time period filter buttons (day/week/month/year) update charts",
+        "Charts are responsive and animated"
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "text": "Create Profile page at route '/profile' that displays user ID, contact information, count of liked songs, count of downloaded songs, and lists of liked/downloaded songs with playback functionality",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "Profile page displaying user ID, contact, liked songs, downloaded songs with counts",
+          "the users ID contact and the like the songs and downloaded songs has to shown with number of accounts"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Profile displays user Principal ID and contact",
+        "Shows total counts for liked and downloaded songs",
+        "Lists liked songs with ability to play or remove",
+        "Lists downloaded songs with ability to play",
+        "Allows editing contact information"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "text": "Implement a persistent music player component that remains visible and functional across all pages, displays current song info (title, artist, album art), includes play/pause, previous/next controls, progress bar, and volume control",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "Persistent music player component with cross-page playback"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Player component persists when navigating between pages",
+        "Displays currently playing song title, artist, album art",
+        "Play/pause, previous, next buttons functional",
+        "Progress bar shows playback position and allows seeking",
+        "Volume control adjusts playback volume"
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "text": "Implement auto-queue functionality in music player that fetches mood-based recommendations when current song ends and automatically plays the next recommended song",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "mood-based auto-queue",
+          "the current song mood made to predict next song on the same mood"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When song finishes, player fetches recommendations based on current song mood",
+        "Next song automatically starts playing",
+        "Queue shows upcoming recommended songs",
+        "User can skip to next recommendation or manually select different song"
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "text": "Design an interactive, vibrant UI with a distinct visual theme featuring smooth animations, hover effects on clickable elements, gradient accents, and colorful components throughout all pages",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "Make the app more interactive and attractive",
+          "Interactive UI with smooth animations, hover effects, and gradient accents"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All interactive elements have hover effects",
+        "Page transitions and component animations are smooth",
+        "Gradient accents used in headers, buttons, or backgrounds",
+        "Color palette is vibrant and cohesive across all pages",
+        "Typography and spacing create visual hierarchy"
+      ]
+    }
+  ],
+  "constraints": [
+    "All backend logic must be implemented in a single Motoko actor",
+    "Frontend must use React with TypeScript, Tailwind CSS, and React Query",
+    "Do not modify immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui",
+    "Audio playback must use HTML5 audio APIs, not external streaming services",
+    "User authentication handled through Internet Identity only"
+  ],
+  "nonGoals": [
+    "Integration with Spotify, Apple Music, or other third-party streaming APIs",
+    "Real-time collaborative playlists or social features",
+    "Audio file upload functionality",
+    "Advanced audio effects or equalizer",
+    "Offline playback support",
+    "Mobile app versions (React Native)"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Abstract music-themed hero background with vibrant gradients and sound wave patterns (hero-music-bg.dim_1920x1080.png)",
+      "Default album art placeholder with musical notes and colorful geometric shapes (album-placeholder.dim_400x400.png)",
+      "Music note icon for empty states and loading (music-note-icon.dim_128x128.png)"
+    ],
+    "edits": []
+  }
+}

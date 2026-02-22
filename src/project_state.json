@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "MusicScope - A music streaming app with mood-based song prediction, listening history visualization, and comprehensive music browsing features",
+  "architectural_notes": [
+    "Use dataset containing song mood, genre, and artist information",
+    "Implement mood-based prediction algorithm for automatic song queueing",
+    "Five-page navigation structure: Home, Artists/Albums, Search, Dashboard, Profile",
+    "Persistent music player component maintaining state across page navigation",
+    "Visualization dashboard with multiple chart types (bars, lines) for listening analytics"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Abstract music-themed hero background with vibrant gradients and sound wave patterns (hero-music-bg.dim_1920x1080.png)\n- Default album art placeholder with musical notes and colorful geometric shapes (album-placeholder.dim_400x400.png)\n- Music note icon for empty states and loading (music-note-icon.dim_128x128.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-home-page-at-route-that-displays-all-songs-in-a-scrollable-list-with-song-title-artist-album-and-duration-and-triggers-playback-when-a-song-is-clicked",
+      "title": "Create Home page at route '/' that displays all songs in a scrollable list with song title, artist, album, and duration, and triggers playback when a song is clicked",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-artists-albums-page-at-route-artists-that-groups-songs-by-artist-and-album-with-expandable-sections-displaying-album-art-or-placeholder-and-triggers-playback-when-a-song-is-clicked",
+      "title": "Create Artists/Albums page at route '/artists' that groups songs by artist and album with expandable sections, displaying album art or placeholder, and triggers playback when a song is clicked",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-search-page-at-route-search-with-a-search-input-that-filters-songs-in-real-time-as-user-types-displaying-matching-results-and-triggers-playback-when-a-result-is-clicked",
+      "title": "Create Search page at route '/search' with a search input that filters songs in real-time as user types, displaying matching results, and triggers playback when a result is clicked",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-dashboard-page-at-route-dashboard-that-displays-listening-history-visualization-with-colorful-bar-and-line-charts-filterable-by-day-week-month-and-year-time-periods",
+      "title": "Create Dashboard page at route '/dashboard' that displays listening history visualization with colorful bar and line charts, filterable by day, week, month, and year time periods",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-profile-page-at-route-profile-that-displays-user-id-contact-information-count-of-liked-songs-count-of-downloaded-songs-and-lists-of-liked-downloaded-songs-with-playback-functionality",
+      "title": "Create Profile page at route '/profile' that displays user ID, contact information, count of liked songs, count of downloaded songs, and lists of liked/downloaded songs with playback functionality",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-persistent-music-player-component-that-remains-visible-and-functional-across-all-pages-displays-current-song-info-title-artist-album-art-includes-play-pause-previous-next-controls-progress-bar-and-volume-control",
+      "title": "Implement a persistent music player component that remains visible and functional across all pages, displays current song info (title, artist, album art), includes play/pause, previous/next controls, progress bar, and volume control",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-an-interactive-vibrant-ui-with-a-distinct-visual-theme-featuring-smooth-animations-hover-effects-on-clickable-elements-gradient-accents-and-colorful-components-throughout-all-pages",
+      "title": "Design an interactive, vibrant UI with a distinct visual theme featuring smooth animations, hover effects on clickable elements, gradient accents, and colorful components throughout all pages",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Backend data models for songs, user profiles, and listening history",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Backend methods for song management, user profiles, listening history, and mood-based recommendations",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Home page with song list and playback functionality",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Artists/Albums page with grouped display and playback",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Search page with real-time filtering and playback",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Dashboard page with colorful charts showing listening history (day/week/month/year)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Profile page displaying user ID, contact, liked songs, downloaded songs with counts",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Persistent music player component with cross-page playback and mood-based auto-queue",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Interactive UI with smooth animations, hover effects, and gradient accents",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Create backend data model for Song with fields: id (Text), title (Text), artist (Text), album (Text), mood (Text), genre (Text), audioUrl (Text), duration (Nat), and createdAt (Int)",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Create backend data model for UserProfile with fields: userId (Principal), displayName (Text), contact (Text), likedSongs (Array of song IDs), downloadedSongs (Array of song IDs), and createdAt (Int)",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Create backend data model for ListeningHistory with fields: id (Text), userId (Principal), songId (Text), timestamp (Int), and mood (Text)",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Implement backend method to add songs with all fields (title, artist, album, mood, genre, audioUrl, duration) and return the created song",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Implement backend method to retrieve all songs as an array",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Implement backend method to get songs filtered by artist, returning an array grouped by artist name",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Implement backend method to get songs filtered by album, returning an array grouped by album name",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Implement backend method to search songs by query string, matching against title, artist, album, or genre, returning filtered results",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Implement backend method to create or update user profile with displayName, contact, and return the profile",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Implement backend method to get user profile by Principal, returning profile with liked/downloaded song counts",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Implement backend method to add a song to user's liked songs array and persist the change",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Implement backend method to remove a song from user's liked songs array",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Implement backend method to add a song to user's downloaded songs array and persist the change",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Implement backend method to record listening history entry with userId, songId, timestamp, and mood",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Implement backend method to get listening history for a user, filterable by time period (day, week, month, year), returning an array of history entries with song details",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Implement backend mood-based recommendation algorithm that takes current song mood and returns an array of 5-10 songs with matching or complementary moods, excluding recently played songs",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-32",
+      "summary": "Implement auto-queue functionality in music player that fetches mood-based recommendations when current song ends and automatically plays the next recommended song",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "MusicScope",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

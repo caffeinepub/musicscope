@@ -1,0 +1,221 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "MusicScope Frontend Implementation - Music Streaming with Mood-Based Recommendations",
+  "requirements": [
+    {
+      "id": "REQ-17",
+      "summary": "Create Home page displaying all songs with playback functionality",
+      "acceptanceCriteria": [
+        "Home page fetches and displays all songs",
+        "Each song card shows title, artist, album, duration",
+        "Clicking a song triggers playback in persistent player",
+        "List is scrollable with smooth scrolling behavior"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "create",
+          "description": "Create Home page component that fetches all songs via backend capability, displays them in a scrollable list with song cards showing title, artist, album, and duration. Each song card triggers playback when clicked by updating the global player context. Include loading states and error handling."
+        },
+        {
+          "path": "frontend/src/components/SongCard.tsx",
+          "operation": "create",
+          "description": "Create reusable SongCard component that displays song information (title, artist, album, duration) with hover effects and click handler to trigger playback. Apply gradient accents and smooth animations per the interactive UI requirement."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire Home page into routing at route '/' and ensure Layout component wraps all routes with PlayerContext provider for persistent player functionality."
+        }
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "summary": "Create Artists/Albums page with grouped, expandable sections and playback",
+      "acceptanceCriteria": [
+        "Page displays artists with their albums in grouped sections",
+        "Sections are expandable/collapsible",
+        "Songs within each album clickable for playback",
+        "Shows placeholder art when album art unavailable"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Artists.tsx",
+          "operation": "create",
+          "description": "Create Artists page that fetches songs grouped by artist and album via backend capabilities. Display expandable/collapsible sections for each artist and album. Use the generated album placeholder image at frontend/public/assets/generated/album-placeholder.dim_400x400.png when album art is unavailable. Each song is clickable to trigger playback."
+        },
+        {
+          "path": "frontend/src/components/ArtistSection.tsx",
+          "operation": "create",
+          "description": "Create expandable artist section component with smooth animations for expand/collapse transitions. Display albums within each artist with album art or placeholder, and nested song lists that trigger playback when clicked."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add Artists page to routing at route '/artists' and include navigation link in Layout component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "summary": "Create Search page with real-time filtering and playback",
+      "acceptanceCriteria": [
+        "Search input filters songs client-side or server-side",
+        "Results update in real-time as user types",
+        "Clicking a result triggers playback",
+        "Shows 'no results' message when search yields nothing"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Search.tsx",
+          "operation": "create",
+          "description": "Create Search page with search input that filters songs in real-time via backend search capability. Display filtered results as song cards, show 'no results' message with the music note icon at frontend/public/assets/generated/music-note-icon.dim_128x128.png when search yields nothing. Each result triggers playback when clicked."
+        },
+        {
+          "path": "frontend/src/hooks/useDebounce.ts",
+          "operation": "create",
+          "description": "Create custom hook to debounce search input for optimized backend queries. Returns debounced value after specified delay to prevent excessive API calls during typing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add Search page to routing at route '/search' and include navigation link in Layout component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Create Dashboard page with colorful charts visualizing listening history",
+      "acceptanceCriteria": [
+        "Dashboard shows at least 2 chart types (bar and line)",
+        "Charts display listening history data with colorful styling",
+        "Time period filter buttons (day/week/month/year) update charts",
+        "Charts are responsive and animated"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "create",
+          "description": "Create Dashboard page that fetches listening history via backend capability filtered by time period (day/week/month/year). Display colorful bar and line charts using a charting library (recharts). Include time period filter buttons with gradient accents. Charts should be responsive and animated."
+        },
+        {
+          "path": "frontend/src/components/ListeningHistoryChart.tsx",
+          "operation": "create",
+          "description": "Create chart component that renders listening history data as colorful bar and line charts. Accept time-aggregated data as props and apply vibrant color palette with smooth animations."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add Dashboard page to routing at route '/dashboard' and include navigation link in Layout component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "summary": "Create Profile page displaying user stats and liked/downloaded songs",
+      "acceptanceCriteria": [
+        "Profile displays user Principal ID and contact",
+        "Shows total counts for liked and downloaded songs",
+        "Lists liked songs with ability to play or remove",
+        "Lists downloaded songs with ability to play",
+        "Allows editing contact information"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Profile.tsx",
+          "operation": "create",
+          "description": "Create Profile page that fetches user profile via backend capability. Display user Principal ID, contact information (editable), counts of liked and downloaded songs. Show lists of liked and downloaded songs with playback functionality. Include remove button for liked songs that calls backend capability to update the list."
+        },
+        {
+          "path": "frontend/src/components/EditContactForm.tsx",
+          "operation": "create",
+          "description": "Create form component for editing user contact information with inline editing or modal dialog. Include validation and save functionality that calls backend profile update capability."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add Profile page to routing at route '/profile' and include navigation link in Layout component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "summary": "Implement persistent music player component with full playback controls",
+      "acceptanceCriteria": [
+        "Player component persists when navigating between pages",
+        "Displays currently playing song title, artist, album art",
+        "Play/pause, previous, next buttons functional",
+        "Progress bar shows playback position and allows seeking",
+        "Volume control adjusts playback volume"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MusicPlayer.tsx",
+          "operation": "create",
+          "description": "Create persistent music player component using HTML5 audio API. Display current song info (title, artist, album art or placeholder at frontend/public/assets/generated/album-placeholder.dim_400x400.png). Include play/pause, previous, next controls, seekable progress bar, and volume control. Component persists across route changes via global state management."
+        },
+        {
+          "path": "frontend/src/contexts/PlayerContext.tsx",
+          "operation": "create",
+          "description": "Create React context for global player state management. Manage current song, playback state, queue, volume, and progress. Provide methods to play, pause, skip, seek, and update queue. Ensure state persists across page navigation."
+        },
+        {
+          "path": "frontend/src/hooks/usePlayer.tsx",
+          "operation": "create",
+          "description": "Create custom hook to access PlayerContext. Returns player state and control methods for components to interact with the global music player."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create layout component that wraps all pages with consistent header/navigation and the persistent MusicPlayer component at the bottom. Use the hero background image at frontend/public/assets/generated/hero-music-bg.dim_1920x1080.png as a backdrop for the header with gradient overlay. Include navigation links with hover effects and smooth transitions."
+        }
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "summary": "Implement mood-based auto-queue functionality with automatic playback",
+      "acceptanceCriteria": [
+        "When song finishes, player fetches recommendations based on current song mood",
+        "Next song automatically starts playing",
+        "Queue shows upcoming recommended songs",
+        "User can skip to next recommendation or manually select different song"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useAutoQueue.tsx",
+          "operation": "create",
+          "description": "Create custom hook that listens to song end events via the HTML5 audio 'ended' event. When current song finishes, fetch mood-based recommendations from backend capability using current song's mood. Automatically update player queue and start playback of next recommended song. Handle edge cases like empty recommendations."
+        },
+        {
+          "path": "frontend/src/components/QueuePanel.tsx",
+          "operation": "create",
+          "description": "Create queue panel component that displays upcoming songs from the auto-queue. Show song title, artist, and mood. Allow user to reorder, remove, or skip to specific songs in queue. Apply smooth animations for queue updates."
+        }
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "summary": "Design vibrant, interactive UI with animations and gradient accents",
+      "acceptanceCriteria": [
+        "All interactive elements have hover effects",
+        "Page transitions and component animations are smooth",
+        "Gradient accents used in headers, buttons, or backgrounds",
+        "Color palette is vibrant and cohesive across all pages",
+        "Typography and spacing create visual hierarchy"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global styles to include vibrant color palette with CSS custom properties for primary, secondary, and accent colors. Add gradient definitions, smooth transition utilities, and animation keyframes. Define hover effect styles for interactive elements. Ensure typography scale and spacing create clear visual hierarchy."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind configuration with custom vibrant color palette, gradient utilities, and animation definitions. Add custom transition durations and easing functions for smooth animations. Configure typography and spacing scales for visual hierarchy."
+        }
+      ]
+    }
+  ]
+}

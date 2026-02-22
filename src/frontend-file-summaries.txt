@@ -1,0 +1,18 @@
+{
+  "frontend/src/App.tsx": "Main application component that sets up TanStack Router with five routes (Home, Artists, Search, Dashboard, Profile) wrapped in PlayerProvider for global music player state.",
+  "frontend/src/contexts/PlayerContext.tsx": "React context provider that manages global music player state including current song, playback controls, queue management, volume, and progress tracking using HTML5 audio API with proper nullable audioRef type.",
+  "frontend/src/components/Layout.tsx": "Layout wrapper component with sticky header navigation, MusicScope branding, responsive nav menu, and footer with attribution link to caffeine.ai.",
+  "frontend/src/components/MusicPlayer.tsx": "Persistent music player component displayed at bottom of screen with playback controls, progress bar, volume slider, and current song information.",
+  "frontend/src/components/SongCard.tsx": "Reusable song card component displaying song metadata with album art, title, artist, mood/genre badges, duration, and hover effects for playback.",
+  "frontend/src/pages/Home.tsx": "Home page displaying all songs in a scrollable list with loading states and click-to-play functionality.",
+  "frontend/src/pages/Artists.tsx": "Artists page with expandable/collapsible sections grouping songs by artist and album with album artwork, nested song lists, and proper TypeScript type assertions for grouped data.",
+  "frontend/src/pages/Search.tsx": "Search page with real-time filtering of songs by title, artist, album, genre, or mood with debounced input and empty state handling.",
+  "frontend/src/pages/Dashboard.tsx": "Dashboard page with colorful charts (bar, line, pie) visualizing listening history, genre distribution, mood patterns, and statistics filtered by time period (day/week/month/year).",
+  "frontend/src/pages/Profile.tsx": "Profile page displaying user information, liked/downloaded song counts and lists, with editable contact information and Internet Identity integration.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks providing mock data for songs, user profile, and listening history with proper TypeScript types from the types module.",
+  "frontend/src/hooks/useDebounce.ts": "Custom hook that debounces a value with configurable delay to optimize search input performance.",
+  "frontend/src/index.css": "Global styles with OKLCH color system defining vibrant purple-themed color palette for light and dark modes with smooth transitions.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending theme with custom OKLCH colors, animations, Inter font family, and design tokens for consistent styling.",
+  "frontend/src/backend.d.ts": "TypeScript type definitions exporting SongMetadata interface and backend actor interface for type-safe backend integration.",
+  "frontend/src/types.ts": "TypeScript type definitions for SongMetadata, UserProfile, and ListeningHistoryData interfaces used throughout the application."
+}

@@ -1,0 +1,148 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-home-page-at-route-that-displays-all-songs-in-a-scrollable-list-with-song-title-artist-album-and-duration-and-triggers-playback-when-a-song-is-clicked",
+      "featureTitle": "Create Home page at route '/' that displays all songs in a scrollable list with song title, artist, album, and duration, and triggers playback when a song is clicked",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/SongCard.tsx",
+        "frontend/src/pages/Home.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-17"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-artists-albums-page-at-route-artists-that-groups-songs-by-artist-and-album-with-expandable-sections-displaying-album-art-or-placeholder-and-triggers-playback-when-a-song-is-clicked",
+      "featureTitle": "Create Artists/Albums page at route '/artists' that groups songs by artist and album with expandable sections, displaying album art or placeholder, and triggers playback when a song is clicked",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Artists.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-18"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-search-page-at-route-search-with-a-search-input-that-filters-songs-in-real-time-as-user-types-displaying-matching-results-and-triggers-playback-when-a-result-is-clicked",
+      "featureTitle": "Create Search page at route '/search' with a search input that filters songs in real-time as user types, displaying matching results, and triggers playback when a result is clicked",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useDebounce.ts",
+        "frontend/src/pages/Search.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-19"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-dashboard-page-at-route-dashboard-that-displays-listening-history-visualization-with-colorful-bar-and-line-charts-filterable-by-day-week-month-and-year-time-periods",
+      "featureTitle": "Create Dashboard page at route '/dashboard' that displays listening history visualization with colorful bar and line charts, filterable by day, week, month, and year time periods",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Dashboard.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-20"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-profile-page-at-route-profile-that-displays-user-id-contact-information-count-of-liked-songs-count-of-downloaded-songs-and-lists-of-liked-downloaded-songs-with-playback-functionality",
+      "featureTitle": "Create Profile page at route '/profile' that displays user ID, contact information, count of liked songs, count of downloaded songs, and lists of liked/downloaded songs with playback functionality",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Profile.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-21"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-persistent-music-player-component-that-remains-visible-and-functional-across-all-pages-displays-current-song-info-title-artist-album-art-includes-play-pause-previous-next-controls-progress-bar-and-volume-control",
+      "featureTitle": "Implement a persistent music player component that remains visible and functional across all pages, displays current song info (title, artist, album art), includes play/pause, previous/next controls, progress bar, and volume control",
+      "files": [
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/components/MusicPlayer.tsx",
+        "frontend/src/contexts/PlayerContext.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-22"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-design-an-interactive-vibrant-ui-with-a-distinct-visual-theme-featuring-smooth-animations-hover-effects-on-clickable-elements-gradient-accents-and-colorful-components-throughout-all-pages",
+      "featureTitle": "Design an interactive, vibrant UI with a distinct visual theme featuring smooth animations, hover effects on clickable elements, gradient accents, and colorful components throughout all pages",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-24"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
